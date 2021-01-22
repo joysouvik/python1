@@ -1,0 +1,53 @@
+from tkinter import *
+
+window = Tk()
+window.title('Leisure Book')
+
+dict_n={'Name':[]}
+dict_a={'Amount':[]}
+
+fr1 = Frame(window)
+fr2 = Frame(window)
+fr1.pack()
+fr2.pack()
+
+l1 = Label(fr1, text='Name')
+l1.pack(side='left')
+
+e1 = Entry(fr1, width=25)
+e1.pack(side='right')
+
+l2 = Label(fr2, text='Amount')
+l2.pack(side='left')
+
+e2 = Entry(fr2, text='8')
+e2.pack(side='right')
+
+
+ amount=10000000
+
+def submit():
+
+    global amount
+    init = e2.get()
+    init1=int(init)
+    if init1 <= amount:
+        n = e1.get()
+        a = e2.get()
+        dict_n['Name'].append(n)
+        dict_a['Amount'].append(a)
+        amount = amount-init1
+    else:
+        print("The amount is too high")
+
+def check():
+    print(f'Name:{dict_n} \n Amount:{dict_a}')
+
+
+su = Button (window,text='Submit',command= submit)
+su.pack()
+
+ch = Button (window,text='Check',command= check)
+ch.pack()
+
+window.mainloop()
